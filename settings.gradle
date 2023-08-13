@@ -1,0 +1,5 @@
+rootProject.name = 'th-vue'
+
+include 'server'
+include 'client'
+

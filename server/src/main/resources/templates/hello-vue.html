@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <title>Vue with Thymeleaf</title>
+    <link rel="stylesheet" href="/vue/app/app.css">
+</head>
+<body>
+
+<div id="app">
+    <h1 th:text="${title}">This title will be replaced</h1>
+    <p> Here comes a Vue component!</p>
+
+    <chart v-bind:chart-data="chartData"></chart>
+
+    <my-component v-bind:title-data="myTitle"></my-component>
+
+    <hello></hello>
+</div>
+
+<script src="/vue/vue@3.3.4/vue.global.prod.js"></script>
+<script src="/vue/app/app.umd.min.js"></script>
+<script>
+    Vue.createApp({
+        components: {
+            'chart': components.WeekChart,
+            'my-component': components.MyComponent
+        },
+        data() {
+            return {
+                myTitle: '[[${title}]]',
+                chartData: [[${chartData}]]
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
